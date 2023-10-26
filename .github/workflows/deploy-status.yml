@@ -1,0 +1,13 @@
+name: Deploy Status
+on:
+  workflow_run:
+    workflows: [Deploy]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy ${{ github.event.workflow_run.conclusion }}"
